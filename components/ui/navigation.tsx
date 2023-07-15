@@ -1,9 +1,13 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import { Button } from '@mui/material';
+import NavMenu from './nav-menu';
 
 export default function Navigation() {
-  const navigatorElement = ['Field', 'Water Management', 'Analyze']
+  const navigationData: { [key: string]: string[] } = {
+    'Field': ['Add', 'Edit', 'Import'],
+    'Water Management': ['Pump', 'TDI', 'Assment'],
+    'AnalyZe': ['Yield', 'Soils', 'Plant Dates']
+  }
 
   return (
     <>
@@ -17,9 +21,11 @@ export default function Navigation() {
           borderRadius: 1
         }}
       >
-        {navigatorElement.map((ele, i) => (
-          <Button key={i} variant="text">{ele}</Button>)
-        )}
+        {
+          Object.keys(navigationData).map((field, i) => (
+            <NavMenu key={i} field={field} items={navigationData[field]} />
+          ))
+        }
       </Box>
     </>
   );
