@@ -1,7 +1,27 @@
 import Head from 'next/head'
-import Map from 'react-map-gl';
+import MapBox from '../components/map/map-box';
+import Navigation from '../components/ui/navigation';
+import MapSource from '../components/map/map-source';
+import useRequest from '@/hooks/use-request';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const { doRequest } = useRequest({
+    url: 'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_admin_1_states_provinces_shp.geojson',
+    method: 'get',
+  });
+
+  const [data, setData] = useState({});
+
+  const getData = async () => {
+    const data = await doRequest()
+    setData(data);
+  };
+
+  useEffect(() => {
+    getData();
+  });
+
   return (
     <>
       <Head>
@@ -10,16 +30,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navigation />
       <main>
         <div>
-          <Map
-            mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
-            initialViewState={{
-              longitude: -122.4,
-              latitude: 37.8,
-              zoom: 14
-            }}
-          />
+          <MapBox>
+            <MapSource geoData={data} />
+          </MapBox>
         </div>
       </main>
     </>
