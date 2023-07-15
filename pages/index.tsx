@@ -35,11 +35,9 @@ export default function Home() {
       <Header />
       <Navigation />
       <main>
-        <div>
-          <MapBox>
-            <MapSource geoData={data} />
-          </MapBox>
-        </div>
+        <MapBox>
+          <MapSource geoData={data} />
+        </MapBox>
       </main>
       <SelectedField />
     </>
