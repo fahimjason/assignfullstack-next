@@ -1,34 +1,26 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import { Grid } from '@mui/material';
+import { Button } from '@mui/material';
 
 export default function Navigation() {
-  const [value, setValue] = React.useState(0);
+  const navigatorElement = ['Field', 'Water Management', 'Analyze']
 
   return (
-    <Box>
-      <BottomNavigation
-        showLabels
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
+    <>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          p: 1,
+          m: 1,
+          bgcolor: 'grey.100',
+          borderRadius: 1
         }}
       >
-        {/* <Grid> */}
-        {/* <Grid xs={4}> */}
-        <BottomNavigationAction label="Logo" />
-        {/* </Grid> */}
-        {/* <Grid xs={8}> */}
-        <BottomNavigationAction label="Global Size" />
-        {/* </Grid> */}
-        {/* <Grid xs={4}> */}
-        <BottomNavigationAction label="Notifications" />
-        <BottomNavigationAction label="Profile" />
-        {/* </Grid> */}
-        {/* </Grid> */}
-      </BottomNavigation>
-    </Box>
+        {navigatorElement.map((ele, i) => (
+          <Button key={i} variant="text">{ele}</Button>)
+        )}
+      </Box>
+    </>
   );
 }

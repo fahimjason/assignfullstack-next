@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import MapBox from '../components/map/map-box';
+import Header from '../components/ui/header';
 import Navigation from '../components/ui/navigation';
 import MapSource from '../components/map/map-source';
 import useRequest from '@/hooks/use-request';
@@ -20,7 +21,7 @@ export default function Home() {
 
   useEffect(() => {
     getData();
-  });
+  }, []);
 
   return (
     <>
@@ -30,6 +31,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <Navigation />
       <main>
         <div>
