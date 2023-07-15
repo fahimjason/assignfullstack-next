@@ -13,7 +13,7 @@ export default function Home() {
     method: 'get',
   });
 
-  const [data, setData] = useState({});
+  const [data, setData] = useState<any>({});
 
   const getData = async () => {
     const data = await doRequest()

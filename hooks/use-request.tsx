@@ -14,7 +14,7 @@ const useRequest = ({ url, method, body, onSuccess }: RequestProps) => {
     const doRequest = async (props: any = {}) => {
         try {
             setErrors(null);
-            const response = await axios[method](url, { ...body, ...props });
+            const response = await (axios as any)[method.toLowerCase()](url, { ...body, ...props });
 
             if (onSuccess) {
                 onSuccess(response.data);
