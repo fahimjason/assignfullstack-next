@@ -5,6 +5,7 @@ import Navigation from '../components/ui/navigation';
 import MapSource from '../components/map/map-source';
 import useRequest from '@/hooks/use-request';
 import { useEffect, useState } from 'react';
+import SelectedField from '@/components/information/selected-field';
 
 export default function Home() {
   const { doRequest } = useRequest({
@@ -40,6 +41,7 @@ export default function Home() {
           </MapBox>
         </div>
       </main>
+      <SelectedField />
     </>
   )
 }
